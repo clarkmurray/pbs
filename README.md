@@ -4,7 +4,7 @@
 
 [ ] Choose team of up to 6 Pokemon
 
-[ ] Choose moves for Pokemon
+[ ] Choose attacks for Pokemon
 
 [ ] Sprites for Pokemon
 
