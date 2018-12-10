@@ -1,5 +1,6 @@
 package com.clarkamurray.pbs.controller;
 
+import com.clarkamurray.pbs.config.AbstractController;
 import com.clarkamurray.pbs.service.UserService;
 import com.clarkamurray.pbs.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/api/user")
+public class UserController extends AbstractController<User, Long> {
 
     private UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
+        super(userService);
         this.userService = userService;
-    }
-
-    @GetMapping(value = "/all")
-    public ResponseEntity<?> findAll(HttpServletRequest request) {
-        List<User> users = userService.findAll();
-        return ResponseEntity.ok(users);
     }
 
 }

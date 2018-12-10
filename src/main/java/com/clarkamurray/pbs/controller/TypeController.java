@@ -1,5 +1,6 @@
 package com.clarkamurray.pbs.controller;
 
+import com.clarkamurray.pbs.config.AbstractController;
 import com.clarkamurray.pbs.model.Type;
 import com.clarkamurray.pbs.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/type")
-public class TypeController {
+@RequestMapping("/api/type")
+public class TypeController extends AbstractController<Type, Integer> {
 
     private TypeService typeService;
 
     @Autowired
     public TypeController(TypeService typeService) {
+        super(typeService);
         this.typeService = typeService;
     }
 

@@ -1,5 +1,6 @@
 package com.clarkamurray.pbs.service;
 
+import com.clarkamurray.pbs.config.AbstractTableService;
 import com.clarkamurray.pbs.model.Pokemon;
 import com.clarkamurray.pbs.repository.PokemonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,12 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PokemonService {
+public class PokemonService extends AbstractTableService<Pokemon, Integer> {
 
     private PokemonRepository pokemonRepository;
 
     @Autowired
     public PokemonService(PokemonRepository pokemonRepository) {
+        super(pokemonRepository);
         this.pokemonRepository = pokemonRepository;
     }
 

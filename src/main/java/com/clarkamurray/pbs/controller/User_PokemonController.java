@@ -1,5 +1,6 @@
 package com.clarkamurray.pbs.controller;
 
+import com.clarkamurray.pbs.config.AbstractController;
 import com.clarkamurray.pbs.model.User_Pokemon;
 import com.clarkamurray.pbs.service.User_PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +14,21 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-pokemon")
-public class User_PokemonController {
+@RequestMapping("/api/user-pokemon")
+public class User_PokemonController extends AbstractController<User_Pokemon, Long> {
 
     private User_PokemonService userPokemonService;
 
     @Autowired
     public User_PokemonController(User_PokemonService userPokemonService) {
+        super(userPokemonService);
         this.userPokemonService = userPokemonService;
     }
 
-    @GetMapping(value = "/{userId}/all")
-    public ResponseEntity<?> findUserPokemon(@PathVariable(name = "userId") Long userId, HttpServletRequest request) {
-        List<User_Pokemon> results = userPokemonService.findUserPokemon(userId);
-        return ResponseEntity.ok(results);
-    }
+//    @GetMapping(value = "/{userId}/all")
+//    public ResponseEntity<?> findUserPokemon(@PathVariable(name = "userId") Long userId, HttpServletRequest request) {
+//        List<User_Pokemon> results = userPokemonService.findUserPokemon(userId);
+//        return ResponseEntity.ok(results);
+//    }
 
 }

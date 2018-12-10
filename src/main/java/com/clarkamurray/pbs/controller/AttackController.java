@@ -1,5 +1,6 @@
 package com.clarkamurray.pbs.controller;
 
+import com.clarkamurray.pbs.config.AbstractController;
 import com.clarkamurray.pbs.model.Attack;
 import com.clarkamurray.pbs.service.AttackService;
 import org.springframework.http.ResponseEntity;
@@ -11,12 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/attack")
-public class AttackController {
+@RequestMapping("/api/attack")
+public class AttackController extends AbstractController<Attack, Integer> {
 
     private AttackService attackService;
 
     public AttackController (AttackService attackService) {
+        super(attackService);
         this.attackService = attackService;
     }
 

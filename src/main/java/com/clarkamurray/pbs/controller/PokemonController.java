@@ -1,5 +1,6 @@
 package com.clarkamurray.pbs.controller;
 
+import com.clarkamurray.pbs.config.AbstractController;
 import com.clarkamurray.pbs.service.PokemonService;
 import com.clarkamurray.pbs.repository.User_PokemonRepository;
 import com.clarkamurray.pbs.model.Pokemon;
@@ -16,14 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pokemon")
-public class PokemonController {
+@RequestMapping("/api/pokemon")
+public class PokemonController extends AbstractController<Pokemon, Integer> {
 
     private PokemonService pokemonService;
     private User_PokemonRepository userPokemonRepository;
 
     public PokemonController(PokemonService pokemonService,
                              User_PokemonRepository userPokemonRepository) {
+        super(pokemonService);
         this.pokemonService = pokemonService;
         this.userPokemonRepository = userPokemonRepository;
     }

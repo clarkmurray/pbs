@@ -1,5 +1,6 @@
 package com.clarkamurray.pbs.service;
 
+import com.clarkamurray.pbs.config.AbstractTableService;
 import com.clarkamurray.pbs.repository.UserRepository;
 import com.clarkamurray.pbs.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,13 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService extends AbstractTableService<User, Long> implements UserDetailsService {
 
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
     public UserService(UserRepository userRepository) {
+        super(userRepository);
         this.userRepository = userRepository;
     }
 
